@@ -10,8 +10,9 @@ class LoguinPage extends StatefulWidget {
 
 //https://hermes.digitalinnovation.one/assets/diome/logo.png
 class _LoguinPageState extends State<LoguinPage> {
-  TextEditingController emailController = TextEditingController(text: "");
-  TextEditingController passowrdController = TextEditingController(text: "");
+  TextEditingController emailController =
+      TextEditingController(text: "email@email.com");
+  TextEditingController passowrdController = TextEditingController(text: "123");
   bool isObscureText = true;
 
   @override
