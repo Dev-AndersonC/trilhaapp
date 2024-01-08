@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/Pages/main_page.dart';
 
 class LoguinPage extends StatefulWidget {
   const LoguinPage({super.key});
@@ -9,9 +10,10 @@ class LoguinPage extends StatefulWidget {
 
 //https://hermes.digitalinnovation.one/assets/diome/logo.png
 class _LoguinPageState extends State<LoguinPage> {
-  String email = "";
-  String password = "";
+  TextEditingController emailController = TextEditingController(text: "");
+  TextEditingController passowrdController = TextEditingController(text: "");
   bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -66,9 +68,7 @@ class _LoguinPageState extends State<LoguinPage> {
                     height: 30,
                     alignment: Alignment.center,
                     child: TextField(
-                      onChanged: (value) {
-                        email = value;
-                      },
+                      controller: emailController,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                           contentPadding: EdgeInsets.only(top: -1),
@@ -90,9 +90,7 @@ class _LoguinPageState extends State<LoguinPage> {
                       height: 30,
                       alignment: Alignment.center,
                       child: TextField(
-                        onChanged: (value) {
-                          password = value;
-                        },
+                        controller: passowrdController,
                         obscureText: isObscureText,
                         style: const TextStyle(color: Colors.white),
                         decoration: InputDecoration(
@@ -127,7 +125,20 @@ class _LoguinPageState extends State<LoguinPage> {
                       child: SizedBox(
                         height: double.infinity,
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (emailController.text.trim() ==
+                                      "email@email.com" &&
+                                  passowrdController.text.trim() == "123") {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MainPage()));
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text("Erro ao fazer login")));
+                              }
+                            },
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
                                     Color.fromARGB(255, 160, 81, 224))),
