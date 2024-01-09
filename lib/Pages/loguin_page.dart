@@ -49,7 +49,7 @@ class _LoguinPageState extends State<LoguinPage> {
                   const Text(
                     "Já tem cadastro?",
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -58,7 +58,7 @@ class _LoguinPageState extends State<LoguinPage> {
                   ),
                   const Text(
                     "Faça seu loguin e make the change_",
-                    style: TextStyle(fontSize: 14, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                   const SizedBox(
                     height: 20,

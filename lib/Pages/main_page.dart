@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/Pages/Subpages/page_one.dart';
+import 'package:trilhaapp/Pages/Subpages/page_three.dart';
+import 'package:trilhaapp/Pages/Subpages/page_two.dart';
 import 'package:trilhaapp/Pages/configuracao.dart';
 import 'package:trilhaapp/Pages/dados_pessoais.dart';
 import 'package:trilhaapp/Pages/termo_e_privacidade.dart';
@@ -11,6 +14,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int posicaoPagina = 0;
+  PageController controller = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -77,15 +83,33 @@ class _MainPageState extends State<MainPage> {
           ),
           backgroundColor: Color.fromARGB(255, 65, 27, 126),
         ),
-        body: PageView(
-          // scrollDirection: Axis.vertical,
+        body: Column(
           children: [
-            Container(
-              color: Colors.lightBlueAccent,
+            Expanded(
+              child: PageView(
+                controller: controller,
+                onPageChanged: (value) {
+                  setState(() {
+                    posicaoPagina = value;
+                  });
+                },
+                // scrollDirection: Axis.vertical,
+                children: const [PageOne(), PageTwo(), PageThree()],
+              ),
             ),
-            Container(
-              color: Colors.amberAccent,
-            )
+            BottomNavigationBar(
+                onTap: (value) {
+                  controller.jumpToPage(value);
+                },
+                currentIndex: posicaoPagina,
+                items: const [
+                  BottomNavigationBarItem(
+                      label: "Home", icon: Icon(Icons.home)),
+                  BottomNavigationBarItem(
+                      label: "page2", icon: Icon(Icons.add)),
+                  BottomNavigationBarItem(
+                      label: "page3", icon: Icon(Icons.person))
+                ])
           ],
         ),
       ),
