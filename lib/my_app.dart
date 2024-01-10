@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blueGrey,
           textTheme: GoogleFonts.robotoTextTheme(),
           useMaterial3: true),
-      // home: const LoguinPage(), //Alterado apenas para facilitar vizialização
-      home: const DadosPessoaisPage(),
+      home: const LoguinPage(), //Alterado apenas para facilitar vizialização
+      // home: const DadosPessoaisPage(),
     );
   }
 }
