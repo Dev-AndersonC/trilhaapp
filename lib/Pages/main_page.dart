@@ -37,9 +37,7 @@ class _MainPageState extends State<MainPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const DadosPessoaisPage(
-                                    texto: "Meus Dados",
-                                  )));
+                              builder: (context) => const DadosPessoaisPage()));
                     }),
                 const Divider(),
                 const SizedBox(
